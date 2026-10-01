@@ -5,6 +5,8 @@
   <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-swift-python-ml-dark.svg">
   <img src="./assets/profile-swift-python-ml-light.svg" width="800" alt="Bayram Tosun. An animated ASCII portrait. Software development. Swift, Python and machine learning. BSc and MSc Computer Science, London.">
 </picture>
+<br>
+<sub>80 × 40 characters · Generated with Python · <a href="https://github.com/byrm-tsn/byrm-tsn/blob/main/scripts/render_profile.py">View the code ↗</a></sub>
 </p>
 
 <p align="center">

@@ -126,6 +126,8 @@ def readme(data):
     languages = ", ".join(f"{name} {100*n/sum(data['languages'].values()):.1f}%" for name, n in language_rows(data["languages"])) or "No public language data yet."
     return f'''<p align="center">
 {picture("profile", animated=True)}
+<br>
+<sub>80 × 40 characters · Generated with Python · <a href="https://github.com/byrm-tsn/byrm-tsn/blob/main/scripts/render_profile.py">View the code ↗</a></sub>
 </p>
 
 <p align="center">
