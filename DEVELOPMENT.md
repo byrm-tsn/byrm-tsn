@@ -46,7 +46,19 @@ required. All repository requests explicitly exclude private repositories.
 Calendar data is requested without authentication to match a public visitor.
 A failed fetch leaves the previous published data intact.
 
-Public repositories include forks; stars and language bytes count owned public
+The repository card uses the account-wide snapshot in
+`assets/repository-total.json`, including private repositories and forks. Its
+verification date is shown separately from the daily metrics date. The workflow
+preserves this total; it does not refresh it or infer changes from public counts.
+To update it, recount owned repositories with authenticated account access,
+update both `count` and `verified`, then rerun the fetcher and renderer. An
+authenticated local count can be checked without printing repository names:
+
+```sh
+gh api --paginate 'user/repos?affiliation=owner&per_page=100' --jq '.[] | select(.owner.login == "byrm-tsn") | .id' | wc -l
+```
+
+Only the aggregate and its date are stored. Stars and language bytes count owned public
 non-fork repositories. Contributions cover the last 365 UTC dates and use the
 counts shown by GitHub's public calendar, including any anonymized private counts
 the profile owner has chosen to make public. Language shares are not proficiency.

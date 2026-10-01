@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 ASSET_NAMES = {
     "profile": "profile-swift-python-ml",
-    "activity": "github-activity",
+    "activity": "account-activity",
     "languages": "language-overview",
 }
 PROFILE_LANGUAGES = ("Swift", "Python", "C#", "TypeScript", "JavaScript", "C++")
@@ -92,7 +92,7 @@ def activity_card(palette, data):
         x, y = 18 + (i % 2) * 150, 71 + (i // 2) * 57
         out += [text(x, y, f"{value:,}", 27, weight=600), text(x, y + 20, label, 12, "muted")]
     return document(310, 166, "GitHub activity", "".join(out), palette,
-                    f"{data['repositories']} public repositories, {data['stars']} stars earned, {data['followers']} followers, and {data['contributions']} contributions visible on the public calendar in 365 days. Updated {data['updated']}.")
+                    f"{data['repositories']} owned repositories including private, verified {data['repositories_verified']}. {data['stars']} stars earned, {data['followers']} followers, and {data['contributions']} contributions visible on the public calendar in 365 days. Public metrics updated {data['updated']}.")
 
 
 def language_card(palette):
@@ -115,7 +115,7 @@ def picture(kind, animated=False):
     sources.append(('(prefers-color-scheme: dark)', f'{asset}-dark.svg'))
     alts = {
         "profile": "Bayram Tosun. An animated ASCII portrait. Software development. Swift, Python and machine learning. BSc and MSc Computer Science, London.",
-        "activity": "GitHub activity: repositories, stars, followers, and contributions. Scope and text summary below.",
+        "activity": "GitHub activity: owned repositories including private, stars, followers, and contributions. Scope, verification date and text summary below.",
         "languages": "Languages I use: " + ", ".join(PROFILE_LANGUAGES) + ".",
     }
     width = 800 if kind == "profile" else 310
@@ -153,11 +153,13 @@ Computer Science **BSc & MSc graduate** in **London**. I build software with **S
 <details>
 <summary>About these numbers</summary>
 
-Updated **{data['updated']}**. **{data['repositories']} public repositories**, **{data['stars']} stars earned** on owned non-fork repositories, **{data['followers']} followers**, and **{data['contributions']} contributions** visible on my public calendar over the last 365 days.
+**{data['repositories']} owned repositories**, including private repositories. This account-wide total was verified on **{data['repositories_verified']}**.
+
+Other figures updated **{data['updated']}**: **{data['stars']} stars earned** on owned public non-fork repositories, **{data['followers']} followers**, and **{data['contributions']} contributions** visible on my public calendar over the last 365 days.
 
 **Repository language shares:** {languages}
 
-The activity figures and repository language shares use public GitHub data. Language shares count code bytes in non-fork repositories, not proficiency or my complete body of work. The **Languages I use** card lists a selection from my broader toolkit. Stats refresh daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml).
+The repository total is a dated account snapshot. The other activity figures and repository language shares use public GitHub data and refresh daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml). Language shares count code bytes in non-fork repositories, not proficiency or my complete body of work. The **Languages I use** card lists a selection from my broader toolkit.
 
 </details>
 <!-- END AUTO:stats -->

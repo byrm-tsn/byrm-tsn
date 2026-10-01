@@ -1,8 +1,9 @@
 import unittest
+from unittest.mock import patch
 from datetime import date, timedelta
 from xml.etree import ElementTree as ET
 
-from fetch_stats import Calendar
+from fetch_stats import Calendar, collect
 from render_profile import PALETTES, hero, language_rows, activity_card, language_card, update_stats_block
 
 
@@ -50,8 +51,23 @@ class ProfileTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             update_stats_block('No markers', generated)
 
+    def test_public_refresh_preserves_dated_account_total(self):
+        # A visibility change can increase the public subset without changing
+        # the account total. Do not add public growth to a stale private count.
+        for public_count in (4, 5):
+            repos = [dict(private=False, owner=dict(login='byrm-tsn'), fork=True)
+                     for _ in range(public_count)]
+            with patch('fetch_stats.api', side_effect=[dict(followers=8), repos]), \
+                 patch('fetch_stats.get', return_value=''), \
+                 patch.object(Calendar, 'days', return_value={}), \
+                 patch('pathlib.Path.read_text', return_value='{"count":6,"verified":"2026-09-20"}'):
+                data = collect()
+            self.assertEqual(data['repositories'], 6)
+            self.assertEqual(data['repositories_verified'], '2026-09-20')
+            self.assertEqual(data['public_repositories'], public_count)
+
     def test_all_svg_variants_and_empty_languages(self):
-        data = dict(updated='2026-10-01', repositories=0, stars=0, followers=0, contributions=0, languages={})
+        data = dict(updated='2026-10-01', repositories=0, repositories_verified='2026-10-01', stars=0, followers=0, contributions=0, languages={})
         for palette in PALETTES.values():
             ET.fromstring(activity_card(palette, data))
             ET.fromstring(language_card(palette))

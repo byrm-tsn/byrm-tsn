@@ -1,4 +1,4 @@
-"""Fetch only public profile data; leave published files intact on failure."""
+"""Refresh public metrics and retain the dated account-wide repository total."""
 
 import json
 import os
@@ -81,6 +81,12 @@ class Calendar(HTMLParser):
 
 def collect():
     today = datetime.now(timezone.utc).date()
+    # The workflow cannot recount private repositories. Keep the verified
+    # account total as a dated snapshot instead of replacing it with a subset.
+    repository_total = json.loads((ROOT / "assets" / "repository-total.json").read_text())
+    if type(repository_total["count"]) is not int or repository_total["count"] < 0:
+        raise ValueError("The verified repository total must be a non-negative integer")
+    repositories_verified = date.fromisoformat(repository_total["verified"]).isoformat()
     user = api(f"users/{USER}")
     repos = []
     page = 1
@@ -101,7 +107,9 @@ def collect():
     days = calendar.days(today)
     return {
         "updated": today.isoformat(),
-        "repositories": len(repos),
+        "repositories": repository_total["count"],
+        "repositories_verified": repositories_verified,
+        "public_repositories": len(repos),
         "stars": sum(r["stargazers_count"] for r in originals),
         "followers": user["followers"],
         "contributions": sum(days.values()),
