@@ -1,9 +1,10 @@
 # Maintaining this profile
 
 The portrait consists of positioned text characters derived from Bayram's supplied
-IMG_0899 photograph, retaining his upper body, sunglasses, scarf and jacket while
+IMG_0677 photograph, retaining his face, shoulders and upper chest while
 excluding the background. The text grid accounts for the character cell aspect
-ratio to preserve facial proportions.
+ratio to preserve facial proportions. The portrait fits both the width and height
+of its frame, so wider photographs retain the complete visible bust.
 SVG is the container, not an illustration of the subject. Its reveal
 takes about two seconds; only the small prompt cursor continues blinking. Explicit
 still assets are selected for reduced-motion visitors, with light/dark character
@@ -41,7 +42,7 @@ the profile owner has chosen to make public. Language shares are not proficiency
 To recreate the ASCII source, install Pillow in a local environment and run:
 
 ```sh
-python scripts/make_portrait.py /path/to/IMG_0899.png
+python scripts/make_portrait.py /path/to/IMG_0677.jpg
 python scripts/render_profile.py
 ```
 
