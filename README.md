@@ -1,9 +1,9 @@
 <p align="center">
 <picture>
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/profile-ascii-dark-still.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile-ascii-light-still.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-ascii-dark.svg">
-  <img src="./assets/profile-ascii-light.svg" width="800" alt="Bayram Tosun. An animated ASCII portrait with my body included and the background removed. Backend development and machine learning. BSc and MSc Computer Science, London.">
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/profile-software-dark-still.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile-software-light-still.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-software-dark.svg">
+  <img src="./assets/profile-software-light.svg" width="800" alt="Bayram Tosun. An animated ASCII portrait. Software development with Swift, Python and C#. BSc and MSc Computer Science, London.">
 </picture>
 </p>
 
@@ -16,22 +16,22 @@
   <a href="https://x.com/9byrmtsn">X</a>
 </p>
 
-Computer Science **BSc & MSc graduate** in **London**, building backend software and exploring machine learning. Away from code, I'm usually behind a camera.
+Computer Science **BSc & MSc graduate** in **London**. I build software with **Swift, Python and C#**, with interests across backend systems, web development and machine learning. Away from code, I'm usually behind a camera.
 
 <p align="center">
   <b>Tools I work with</b><br><br>
-  <img src="https://skillicons.dev/icons?i=py,cs,swift,ts,js,cpp,c,django,react,html,css,postgres,mysql,pytorch,tensorflow,docker,git,linux,gcp&amp;perline=10&amp;theme=dark" width="460" alt="Python, C#, Swift, TypeScript, JavaScript, C++, C, Django, React, HTML, CSS, PostgreSQL, MySQL, PyTorch, TensorFlow, Docker, Git, Linux, Google Cloud">
+  <img src="https://skillicons.dev/icons?i=swift,py,cs,ts,js,cpp,c,django,react,html,css,postgres,mysql,pytorch,tensorflow,docker,git,linux,gcp&amp;perline=10&amp;theme=dark" width="460" alt="Swift, Python, C#, TypeScript, JavaScript, C++, C, Django, React, HTML, CSS, PostgreSQL, MySQL, PyTorch, TensorFlow, Docker, Git, Linux, Google Cloud">
 </p>
 
 <!-- BEGIN AUTO:stats -->
 <p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/activity-dark.svg">
-  <img src="./assets/activity-light.svg" width="310" alt="Public repositories, stars, followers, and contributions. Text summary below.">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/github-activity-dark.svg">
+  <img src="./assets/github-activity-light.svg" width="310" alt="GitHub activity: repositories, stars, followers, and contributions. Scope and text summary below.">
 </picture>
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/languages-dark.svg">
-  <img src="./assets/languages-light.svg" width="310" alt="Language shares in my public code. Text summary below.">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/language-overview-dark.svg">
+  <img src="./assets/language-overview-light.svg" width="310" alt="Languages I use: Swift, Python, C#, TypeScript, JavaScript, C++.">
 </picture>
 </p>
 
@@ -40,9 +40,9 @@ Computer Science **BSc & MSc graduate** in **London**, building backend software
 
 Updated **2026-10-01**. **4 public repositories**, **4 stars earned** on owned non-fork repositories, **8 followers**, and **14 contributions** visible on my public calendar over the last 365 days.
 
-**Language shares:** Python 96.2%, C 2.1%, HTML 0.6%, C++ 0.4%, Cython 0.4%, Other 0.3%
+**Repository language shares:** Python 96.2%, C 2.1%, HTML 0.6%, C++ 0.4%, Cython 0.4%, Other 0.3%
 
-These measure code bytes in my public, non-fork repositories, not proficiency. Refreshed daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml).
+The activity figures and repository language shares use public GitHub data. Language shares count code bytes in non-fork repositories, not proficiency or my complete body of work. The **Languages I use** card lists a selection from my broader toolkit. Stats refresh daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml).
 
 </details>
 <!-- END AUTO:stats -->

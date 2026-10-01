@@ -24,6 +24,12 @@ Edit `README.md` normally outside `BEGIN AUTO:stats` / `END AUTO:stats`.
 The daily refresh changes only that block and the generated assets. It refuses to
 overwrite the README if the markers are missing.
 
+The introduction describes software development broadly, including Swift,
+Python and C#. Edit `PROFILE_LANGUAGES` in `render_profile.py` to update the
+selected languages on the **Languages I use** card. This curated toolkit is
+independent of repository byte counts; those measurements remain available
+under **About these numbers** with their data scope explained.
+
 ## Regeneration
 
 Python 3.12, standard library only:

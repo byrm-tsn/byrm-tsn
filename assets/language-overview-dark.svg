@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="310" height="166" viewBox="0 0 310 166" role="img" aria-labelledby="title desc">
+<title id="title">Languages I use</title><desc id="desc">Selected languages in my work: Swift, Python, C#, TypeScript, JavaScript, C++.</desc>
+<rect width="310" height="166" rx="8" fill="#11161c"/>
+<g font-family="'SFMono-Regular',Consolas,'Liberation Mono',monospace"><text x="18" y="27" font-size="12" font-weight="600" fill="#d9ac70" >LANGUAGES I USE</text><text x="18" y="69" font-size="16" font-weight="500" fill="#e5e9ee" >Swift</text><text x="168" y="69" font-size="16" font-weight="500" fill="#e5e9ee" >Python</text><text x="18" y="107" font-size="16" font-weight="500" fill="#e5e9ee" >C#</text><text x="168" y="107" font-size="16" font-weight="500" fill="#e5e9ee" >TypeScript</text><text x="18" y="145" font-size="16" font-weight="500" fill="#e5e9ee" >JavaScript</text><text x="168" y="145" font-size="16" font-weight="500" fill="#e5e9ee" >C++</text></g>
+</svg>

@@ -54,7 +54,7 @@ class ProfileTests(unittest.TestCase):
         data = dict(updated='2026-10-01', repositories=0, stars=0, followers=0, contributions=0, languages={})
         for palette in PALETTES.values():
             ET.fromstring(activity_card(palette, data))
-            ET.fromstring(language_card(palette, data))
+            ET.fromstring(language_card(palette))
             for animated in (False, True):
                 root = ET.fromstring(hero(palette, animated))
                 animations = root.findall('.//{http://www.w3.org/2000/svg}animate')

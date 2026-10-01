@@ -8,7 +8,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
-PROFILE_ASSET = "profile-ascii"
+ASSET_NAMES = {
+    "profile": "profile-software",
+    "activity": "github-activity",
+    "languages": "language-overview",
+}
+PROFILE_LANGUAGES = ("Swift", "Python", "C#", "TypeScript", "JavaScript", "C++")
 PALETTES = {
     "dark": {"bg": "#11161c", "fg": "#e5e9ee", "muted": "#a0acb9", "line": "#303943", "accent": "#d9ac70", "ink": "#c3ccd5"},
     "light": {"bg": "#f6f5f1", "fg": "#242b32", "muted": "#56616b", "line": "#d8dcd9", "accent": "#885821", "ink": "#45515d"},
@@ -61,15 +66,15 @@ def hero(palette, animated=True):
     out = [portrait(16, 15, 354, animated, palette == PALETTES["light"]),
            text(414, 76, "~/byrm-tsn", 12, "accent"),
            text(410, 130, "Bayram Tosun", 33, weight=650),
-           text(414, 175, "Backend development", 17),
-           text(414, 201, "Machine learning", 17),
+           text(414, 175, "Software development", 17),
+           text(414, 201, "Swift · Python · C#", 14),
            text(414, 247, "BSc + MSc Computer Science", 12, "muted"),
            text(414, 269, "London, UK", 12, "muted"),
            text(414, 324, "> always curious", 12, "accent")]
     animation = '<animate attributeName="opacity" values="1;0;1" keyTimes="0;0.5;1" dur="1.4s" calcMode="discrete" repeatCount="indefinite"/>' if animated else ""
     out.append(f'<text x="537" y="324" fill="accent" font-size="12">_{animation}</text>')
-    return document(760, 384, "Bayram Tosun — backend development and machine learning", "".join(out), palette,
-                    "Animated ASCII portrait from my photograph, including my shoulders and upper chest, with the background excluded. Computer Science BSc and MSc graduate in London.")
+    return document(760, 384, "Bayram Tosun — software development", "".join(out), palette,
+                    "Animated ASCII portrait from my photograph, including my shoulders and upper chest, with the background excluded. Software development with Swift, Python and C#. Computer Science BSc and MSc graduate in London.")
 
 
 def language_rows(languages):
@@ -80,48 +85,38 @@ def language_rows(languages):
 
 
 def activity_card(palette, data):
-    out = [text(18, 27, "PUBLIC ACTIVITY", 12, "accent", 600)]
+    out = [text(18, 27, "GITHUB ACTIVITY", 12, "accent", 600)]
     metrics = [("Repositories", data["repositories"]), ("Stars earned", data["stars"]),
                ("Followers", data["followers"]), ("Contributions / yr", data["contributions"])]
     for i, (label, value) in enumerate(metrics):
         x, y = 18 + (i % 2) * 150, 71 + (i // 2) * 57
         out += [text(x, y, f"{value:,}", 27, weight=600), text(x, y + 20, label, 12, "muted")]
-    return document(310, 166, "Public GitHub activity", "".join(out), palette,
+    return document(310, 166, "GitHub activity", "".join(out), palette,
                     f"{data['repositories']} public repositories, {data['stars']} stars earned, {data['followers']} followers, and {data['contributions']} contributions visible on the public calendar in 365 days. Updated {data['updated']}.")
 
 
-def language_card(palette, data):
-    out = [text(18, 27, "LANGUAGES IN PUBLIC CODE", 12, "accent", 600)]
-    ranked = language_rows(data["languages"])
-    total = sum(data["languages"].values())
-    shades = [palette["accent"], palette["fg"], palette["ink"], palette["muted"], "#a68fa8", "#839784"]
-    pos = 18
-    for i, (name, n) in enumerate(ranked):
-        width = 274 * n / total
-        out.append(f'<rect x="{pos:.3f}" y="42" width="{width:.3f}" height="6" fill="{shades[i]}"/>')
-        pos += width
-        y = 69 + 16.5 * i
-        out += [text(18, y, "●", 8, shades[i]), text(33, y, name, 12),
-                text(292, y, f"{100*n/total:.1f}%", 12, "muted", extra='text-anchor="end"')]
-    if not ranked:
-        out.append(text(18, 85, "No public language data yet.", 12, "muted"))
-    return document(310, 166, "Languages in public repositories", "".join(out), palette,
-                    "Code byte shares in owned public non-fork repositories. These are not proficiency ratings.")
+def language_card(palette):
+    out = [text(18, 27, "LANGUAGES I USE", 12, "accent", 600)]
+    for i, name in enumerate(PROFILE_LANGUAGES):
+        x, y = 18 + (i % 2) * 150, 69 + (i // 2) * 38
+        out.append(text(x, y, name, 16, weight=500))
+    return document(310, 166, "Languages I use", "".join(out), palette,
+                    "Selected languages in my work: " + ", ".join(PROFILE_LANGUAGES) + ".")
 
 
 def picture(kind, animated=False):
     # Theme/motion sources share one geometry. Never serve a tall mobile image
     # or use percentage widths: some README rendering paths can upscale them.
-    asset = PROFILE_ASSET if kind == "profile" else kind
+    asset = ASSET_NAMES[kind]
     sources = []
     if animated:
         sources += [('(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)', f'{asset}-dark-still.svg'),
                     ('(prefers-reduced-motion: reduce)', f'{asset}-light-still.svg')]
     sources.append(('(prefers-color-scheme: dark)', f'{asset}-dark.svg'))
     alts = {
-        "profile": "Bayram Tosun. An animated ASCII portrait with my body included and the background removed. Backend development and machine learning. BSc and MSc Computer Science, London.",
-        "activity": "Public repositories, stars, followers, and contributions. Text summary below.",
-        "languages": "Language shares in my public code. Text summary below.",
+        "profile": "Bayram Tosun. An animated ASCII portrait. Software development with Swift, Python and C#. BSc and MSc Computer Science, London.",
+        "activity": "GitHub activity: repositories, stars, followers, and contributions. Scope and text summary below.",
+        "languages": "Languages I use: " + ", ".join(PROFILE_LANGUAGES) + ".",
     }
     width = 800 if kind == "profile" else 310
     return '<picture>\n' + ''.join(f'  <source media="{media}" srcset="./assets/{file}">\n' for media, file in sources) + f'  <img src="./assets/{asset}-light.svg" width="{width}" alt="{alts[kind]}">\n</picture>'
@@ -142,11 +137,11 @@ def readme(data):
   <a href="https://x.com/9byrmtsn">X</a>
 </p>
 
-Computer Science **BSc & MSc graduate** in **London**, building backend software and exploring machine learning. Away from code, I'm usually behind a camera.
+Computer Science **BSc & MSc graduate** in **London**. I build software with **Swift, Python and C#**, with interests across backend systems, web development and machine learning. Away from code, I'm usually behind a camera.
 
 <p align="center">
   <b>Tools I work with</b><br><br>
-  <img src="https://skillicons.dev/icons?i=py,cs,swift,ts,js,cpp,c,django,react,html,css,postgres,mysql,pytorch,tensorflow,docker,git,linux,gcp&amp;perline=10&amp;theme=dark" width="460" alt="Python, C#, Swift, TypeScript, JavaScript, C++, C, Django, React, HTML, CSS, PostgreSQL, MySQL, PyTorch, TensorFlow, Docker, Git, Linux, Google Cloud">
+  <img src="https://skillicons.dev/icons?i=swift,py,cs,ts,js,cpp,c,django,react,html,css,postgres,mysql,pytorch,tensorflow,docker,git,linux,gcp&amp;perline=10&amp;theme=dark" width="460" alt="Swift, Python, C#, TypeScript, JavaScript, C++, C, Django, React, HTML, CSS, PostgreSQL, MySQL, PyTorch, TensorFlow, Docker, Git, Linux, Google Cloud">
 </p>
 
 <!-- BEGIN AUTO:stats -->
@@ -160,9 +155,9 @@ Computer Science **BSc & MSc graduate** in **London**, building backend software
 
 Updated **{data['updated']}**. **{data['repositories']} public repositories**, **{data['stars']} stars earned** on owned non-fork repositories, **{data['followers']} followers**, and **{data['contributions']} contributions** visible on my public calendar over the last 365 days.
 
-**Language shares:** {languages}
+**Repository language shares:** {languages}
 
-These measure code bytes in my public, non-fork repositories, not proficiency. Refreshed daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml).
+The activity figures and repository language shares use public GitHub data. Language shares count code bytes in non-fork repositories, not proficiency or my complete body of work. The **Languages I use** card lists a selection from my broader toolkit. Stats refresh daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml).
 
 </details>
 <!-- END AUTO:stats -->
@@ -187,10 +182,10 @@ def main():
     data = json.loads((ASSETS / "stats.json").read_text())
     for theme, palette in PALETTES.items():
         for animated in (False, True):
-            name = f"{PROFILE_ASSET}-{theme}" + ("" if animated else "-still") + ".svg"
+            name = f"{ASSET_NAMES['profile']}-{theme}" + ("" if animated else "-still") + ".svg"
             (ASSETS / name).write_text(hero(palette, animated))
-        (ASSETS / f"activity-{theme}.svg").write_text(activity_card(palette, data))
-        (ASSETS / f"languages-{theme}.svg").write_text(language_card(palette, data))
+        (ASSETS / f"{ASSET_NAMES['activity']}-{theme}.svg").write_text(activity_card(palette, data))
+        (ASSETS / f"{ASSET_NAMES['languages']}-{theme}.svg").write_text(language_card(palette))
     target = ROOT / "README.md"
     generated = readme(data)
     target.write_text(generated if "--full" in sys.argv else update_stats_block(target.read_text(), generated))
