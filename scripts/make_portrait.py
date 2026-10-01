@@ -1,6 +1,6 @@
 """Convert Bayram's GitHub photograph into a fixed-width ASCII source file.
 
-Optional authoring tool (Pillow required); daily refreshes use portrait.txt.
+Optional authoring tool (Pillow required); daily refreshes use portrait-*.txt.
 Usage: python scripts/make_portrait.py /path/to/github-avatar.jpg
 """
 

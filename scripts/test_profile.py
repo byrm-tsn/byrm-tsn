@@ -53,10 +53,10 @@ class ProfileTests(unittest.TestCase):
     def test_all_svg_variants_and_empty_languages(self):
         data = dict(updated='2026-10-01', repositories=0, stars=0, followers=0, contributions=0, languages={})
         for palette in PALETTES.values():
-            for mobile in (False, True):
-                ET.fromstring(stats(palette, data, mobile))
+            for mobile, compact in ((False, False), (True, False), (False, True)):
+                ET.fromstring(stats(palette, data, mobile, compact))
                 for animated in (False, True):
-                    root = ET.fromstring(hero(palette, mobile, animated))
+                    root = ET.fromstring(hero(palette, mobile, animated, compact))
                     animations = root.findall('.//{http://www.w3.org/2000/svg}animate')
                     self.assertEqual(bool(animations), animated)
 

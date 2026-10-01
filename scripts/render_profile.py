@@ -49,8 +49,8 @@ def portrait(x, y, scale=1, animated=True, light=False):
     return "".join(out)
 
 
-def hero(palette, mobile=False, animated=True):
-    w, h = (400, 607) if mobile else (900, 450)
+def hero(palette, mobile=False, animated=True, compact=False):
+    w, h = (400, 607) if mobile else ((600, 390) if compact else (900, 450))
     light = palette == PALETTES["light"]
     if mobile:
         out = [text(28, 34, "~/byrm-tsn", 13, "accent"), text(28, 79, "Bayram Tosun", 32, weight=650),
@@ -58,6 +58,14 @@ def hero(palette, mobile=False, animated=True):
                text(28, 477, "Backend development · ML", 14), text(28, 508, "BSc + MSc Computer Science", 13, "muted"),
                text(28, 536, "London, UK", 13, "muted"), text(28, 578, "> always curious", 13, "accent")]
         cursor_x, cursor_y = 159, 578
+    elif compact:
+        out = [text(22, 32, "~/byrm-tsn", 14, "accent"), portrait(12, 72, .73, animated, light),
+               text(265, 93, "Bayram Tosun", 32, weight=650), text(265, 128, "Software. Learning.", 17),
+               text(265, 155, "Curiosity.", 17), text(265, 206, "Backend development", 17),
+               text(265, 235, "Machine learning", 17), text(265, 281, "BSc + MSc", 16, "muted"),
+               text(265, 307, "Computer Science", 16, "muted"), text(265, 340, "London, UK", 16, "muted"),
+               text(22, 372, "> always curious", 13, "accent")]
+        cursor_x, cursor_y = 153, 372
     else:
         out = [portrait(30, 41, 1, animated, light), text(390, 64, "~/byrm-tsn", 13, "accent"),
                text(386, 128, "Bayram Tosun", 46, weight=650), text(390, 172, "Software. Learning. Curiosity.", 20),
@@ -78,7 +86,25 @@ def language_rows(languages):
     return ranked
 
 
-def stats(palette, data, mobile=False):
+def stats(palette, data, mobile=False, compact=False):
+    if compact:
+        out = [text(24, 30, "PUBLIC ACTIVITY", 14, "accent", 600)]
+        for i, (label, value) in enumerate([("Repositories", data["repositories"]), ("Stars earned", data["stars"]), ("Followers", data["followers"]), ("Contributions¹", data["contributions"]) ]):
+            x = 24 + 143*i
+            out += [text(x, 80, f"{value:,}", 32, weight=600), text(x, 106, label, 13, "muted")]
+        out += ['<path d="M24 133H576" stroke="line"/>', text(24, 166, "LANGUAGES IN PUBLIC CODE", 14, "accent", 600)]
+        total = sum(data["languages"].values())
+        ranked = language_rows(data["languages"])
+        shades = [palette["accent"], palette["fg"], palette["ink"], palette["muted"], "#a68fa8", "#839784"]
+        pos = 24
+        for i, (name, n) in enumerate(ranked):
+            width = 552 * n / total
+            out.append(f'<rect x="{pos:.3f}" y="185" width="{width:.3f}" height="8" fill="{shades[i]}"/>')
+            pos += width
+            x, y = 24 + (i % 2) * 290, 228 + (i // 2) * 29
+            out += [text(x, y, "●", 11, shades[i]), text(x+19, y, name, 15), text(x+260, y, f"{100*n/total:.1f}%", 15, "muted", extra='text-anchor="end"')]
+        out.append(text(24, 326, f"Updated {data['updated']} · ¹last 365 days", 12, "muted"))
+        return document(600, 348, "Bayram's public GitHub statistics", "".join(out), palette, "Public profile metrics and language shares. See the accessible text summary in the README.")
     w, h = (400, 530) if mobile else (900, 310)
     out = [text(28, 35, "PUBLIC ACTIVITY", 12, "accent", 600)]
     metrics = [("Repositories", data["repositories"]), ("Stars earned", data["stars"]),
@@ -114,11 +140,15 @@ def picture(kind, animated=False):
         sources += [
             ('(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 600px)', f'{kind}-dark-mobile-still.svg'),
             ('(prefers-reduced-motion: reduce) and (max-width: 600px)', f'{kind}-light-mobile-still.svg'),
+            ('(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 1100px)', f'{kind}-dark-compact-still.svg'),
+            ('(prefers-reduced-motion: reduce) and (max-width: 1100px)', f'{kind}-light-compact-still.svg'),
             ('(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)', f'{kind}-dark-still.svg'),
             ('(prefers-reduced-motion: reduce)', f'{kind}-light-still.svg'),
         ]
     sources += [('(prefers-color-scheme: dark) and (max-width: 600px)', f'{kind}-dark-mobile.svg'),
                 ('(max-width: 600px)', f'{kind}-light-mobile.svg'),
+                ('(prefers-color-scheme: dark) and (max-width: 1100px)', f'{kind}-dark-compact.svg'),
+                ('(max-width: 1100px)', f'{kind}-light-compact.svg'),
                 ('(prefers-color-scheme: dark)', f'{kind}-dark.svg')]
     alt = "Bayram Tosun. An animated ASCII portrait made from my photograph. Backend development and machine learning. Computer Science BSc and MSc, London." if kind == "hello" else "Public GitHub activity and repository language shares. Accessible text is available below."
     return '<picture>\n' + ''.join(f'  <source media="{media}" srcset="./assets/{file}">\n' for media, file in sources) + f'  <img src="./assets/{kind}-light.svg" width="100%" alt="{alt}">\n</picture>'
@@ -193,16 +223,16 @@ def update_stats_block(existing, generated):
 def main():
     data = json.loads((ASSETS / "stats.json").read_text())
     for theme, palette in PALETTES.items():
-        for mobile in (False, True):
-            suffix = theme + ("-mobile" if mobile else "")
+        for mobile, compact in ((False, False), (True, False), (False, True)):
+            suffix = theme + ("-mobile" if mobile else ("-compact" if compact else ""))
             for animated in (False, True):
                 name = f"hello-{suffix}" + ("" if animated else "-still") + ".svg"
-                (ASSETS / name).write_text(hero(palette, mobile, animated))
-            (ASSETS / f"stats-{suffix}.svg").write_text(stats(palette, data, mobile))
+                (ASSETS / name).write_text(hero(palette, mobile, animated, compact))
+            (ASSETS / f"stats-{suffix}.svg").write_text(stats(palette, data, mobile, compact))
     target = ROOT / "README.md"
     generated = readme(data)
     target.write_text(generated if "--full" in sys.argv else update_stats_block(target.read_text(), generated))
-    print("Rendered profile, 8 portrait assets, and 4 statistics assets.")
+    print("Rendered profile, 12 portrait assets, and 6 statistics assets.")
 
 
 if __name__ == "__main__":
