@@ -1,73 +1,67 @@
 <picture>
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 900px)" srcset="./assets/header-dark-mobile-still.svg">
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 900px)" srcset="./assets/header-light-mobile-still.svg">
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/header-dark-still.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/header-light-still.svg">
-  <source media="(prefers-color-scheme: dark) and (max-width: 900px)" srcset="./assets/header-dark-mobile.svg">
-  <source media="(max-width: 900px)" srcset="./assets/header-light-mobile.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/header-dark.svg">
-  <img src="./assets/header-light.svg" width="100%" alt="Hi, I'm Bayram Tosun. Software developer, Computer Science BSc and MSc graduate, and photographer based in London. An animated camera companion explores code, learning, and photography.">
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/hello-dark-mobile-still.svg">
+  <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="./assets/hello-light-mobile-still.svg">
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/hello-dark-still.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hello-light-still.svg">
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/hello-dark-mobile.svg">
+  <source media="(max-width: 600px)" srcset="./assets/hello-light-mobile.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/hello-dark.svg">
+  <img src="./assets/hello-light.svg" width="100%" alt="Bayram Tosun. An animated ASCII portrait made from my photograph. Backend development and machine learning. Computer Science BSc and MSc, London.">
 </picture>
 
 <p align="center">
-  <a href="https://bayramtosun.dev"><b>My corner of the internet ↗</b></a>
-  &nbsp; · &nbsp;
-  <a href="mailto:bayramtosun@outlook.com"><b>Say hello ↗</b></a>
+  <a href="https://bayramtosun.dev"><b>Website ↗</b></a> &nbsp; · &nbsp;
+  <a href="mailto:bayramtosun@outlook.com"><b>Email ↗</b></a> &nbsp; · &nbsp;
+  <a href="https://linkedin.com/in/bayram-tosun-a19217102"><b>LinkedIn ↗</b></a>
 </p>
-
-<br>
 
 ### A little about me
 
-I'm **Bayram**, a **Computer Science BSc & MSc graduate** based in **London**. I enjoy turning ideas into software, exploring how machines learn, and understanding the logic underneath it all.
+I build backend systems and explore machine learning. I enjoy turning ideas into practical software and understanding the logic underneath.
 
-- **I build** — backend systems, web applications, and practical software with Python, Django, C#, Swift, and TypeScript.
-- **I explore** — machine learning, computer vision, and the maths that makes them work.
-- **I notice** — light, composition, and the little details. Photography lives at [@bayram.jpeg](https://instagram.com/bayram.jpeg).
+My background is in **Computer Science, at both BSc and MSc level**. My interests span backend engineering, computer vision, and cloud tooling. Away from code, I spend time with a camera — you can find that side of me at [@bayram.jpeg](https://instagram.com/bayram.jpeg).
 
-Some days it's code. Some days it's a camera. Usually, it's curiosity.
+### Tools I work with
 
-### My toolkit
+**Languages**
 
-**Software** &nbsp; `Python` `Django` `C#` `Swift` `TypeScript` `React`
+<img src="https://skillicons.dev/icons?i=py,cs,swift,ts,js,cpp,c&amp;theme=dark" width="308" alt="Python, C#, Swift, TypeScript, JavaScript, C++, C">
 
-**Machine learning** &nbsp; `PyTorch` `TensorFlow` `OpenCV`
+**Web & data**
 
-**Data & infrastructure** &nbsp; `PostgreSQL` `Docker` `Git` `Linux` `Google Cloud`
+<img src="https://skillicons.dev/icons?i=django,react,html,css,postgres,mysql&amp;theme=dark" width="263" alt="Django, React, HTML, CSS, PostgreSQL, MySQL">
 
-<details>
-  <summary>A few more tools in the drawer</summary>
-  <br>
-  C · C++ · JavaScript · HTML · CSS · MySQL
-</details>
+**Machine learning & infrastructure**
 
-<br>
+<img src="https://skillicons.dev/icons?i=pytorch,tensorflow,docker,git,linux,gcp&amp;theme=dark" width="263" alt="PyTorch, TensorFlow, Docker, Git, Linux, Google Cloud">
 
+### On GitHub
+
+<!-- BEGIN AUTO:stats -->
 <picture>
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 900px)" srcset="./assets/curiosity-dark-mobile-still.svg">
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 900px)" srcset="./assets/curiosity-light-mobile-still.svg">
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/curiosity-dark-still.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/curiosity-light-still.svg">
-  <source media="(prefers-color-scheme: dark) and (max-width: 900px)" srcset="./assets/curiosity-dark-mobile.svg">
-  <source media="(max-width: 900px)" srcset="./assets/curiosity-light-mobile.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/curiosity-dark.svg">
-  <img src="./assets/curiosity-light.svg" width="100%" alt="Build. Learn. Notice. Repeat.">
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/stats-dark-mobile.svg">
+  <source media="(max-width: 600px)" srcset="./assets/stats-light-mobile.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg">
+  <img src="./assets/stats-light.svg" width="100%" alt="Public GitHub activity and repository language shares. Accessible text is available below.">
 </picture>
 
-<br>
+<details>
+<summary>About these numbers · accessible text</summary>
 
-<p align="center">
-  <a href="https://www.linkedin.com/in/bayram-tosun-a19217102/"><b>LinkedIn</b></a>
-  &nbsp; · &nbsp;
-  <a href="https://instagram.com/bayram.jpeg"><b>Photography</b></a>
-  &nbsp; · &nbsp;
-  <a href="https://medium.com/@bayramtosun"><b>Writing</b></a>
-  &nbsp; · &nbsp;
-  <a href="https://x.com/9byrmtsn"><b>X</b></a>
-</p>
+Updated **2026-10-01**. **4 public repositories**, **4 stars earned** on owned non-fork repositories, **8 followers**, and **6 contributions** visible on my public calendar over the last 365 days.
 
-<p align="center">
-  <a href="https://github.com/byrm-tsn?tab=repositories">Explore my code</a>
-  &nbsp; · &nbsp;
-  <a href="https://www.buymeacoffee.com/bayramtosun">Buy me a coffee</a>
-</p>
+**Language shares:** Python 96.2%, C 2.1%, HTML 0.6%, C++ 0.4%, Cython 0.4%, Other 0.3%
+
+Language shares measure code bytes in my public, non-fork repositories; they are not a measure of proficiency. The cards refresh daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml).
+
+</details>
+<!-- END AUTO:stats -->
+
+### Elsewhere
+
+[Photography ↗](https://instagram.com/bayram.jpeg) &nbsp; · &nbsp; [Writing ↗](https://medium.com/@bayramtosun) &nbsp; · &nbsp; [X ↗](https://x.com/9byrmtsn) &nbsp; · &nbsp; [Buy me a coffee ↗](https://www.buymeacoffee.com/bayramtosun)
+
+<sub>Find me at <a href="https://bayramtosun.dev">bayramtosun.dev</a> or say hello at <a href="mailto:bayramtosun@outlook.com">bayramtosun@outlook.com</a>.</sub>
+
+<br><br>
+<img src="https://komarev.com/ghpvc/?username=byrm-tsn&amp;label=Profile+views&amp;color=80705b&amp;style=flat" alt="Profile views">
