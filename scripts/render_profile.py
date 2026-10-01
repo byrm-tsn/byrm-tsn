@@ -54,12 +54,12 @@ def hero(palette, mobile=False, animated=True, compact=False):
     light = palette == PALETTES["light"]
     if mobile:
         out = [text(28, 34, "~/byrm-tsn", 13, "accent"), text(28, 79, "Bayram Tosun", 32, weight=650),
-               text(28, 112, "Software. Learning. Curiosity.", 16), portrait(77, 147, .80, animated, light),
+               text(28, 112, "Software. Learning. Curiosity.", 16), portrait(91, 147, .71, animated, light),
                text(28, 477, "Backend development · ML", 14), text(28, 508, "BSc + MSc Computer Science", 13, "muted"),
                text(28, 536, "London, UK", 13, "muted"), text(28, 578, "> always curious", 13, "accent")]
         cursor_x, cursor_y = 159, 578
     elif compact:
-        out = [text(22, 32, "~/byrm-tsn", 14, "accent"), portrait(12, 72, .73, animated, light),
+        out = [text(22, 32, "~/byrm-tsn", 14, "accent"), portrait(23, 72, .66, animated, light),
                text(265, 93, "Bayram Tosun", 32, weight=650), text(265, 128, "Software. Learning.", 17),
                text(265, 155, "Curiosity.", 17), text(265, 206, "Backend development", 17),
                text(265, 235, "Machine learning", 17), text(265, 281, "BSc + MSc", 16, "muted"),
@@ -67,7 +67,7 @@ def hero(palette, mobile=False, animated=True, compact=False):
                text(22, 372, "> always curious", 13, "accent")]
         cursor_x, cursor_y = 153, 372
     else:
-        out = [portrait(30, 41, 1, animated, light), text(390, 64, "~/byrm-tsn", 13, "accent"),
+        out = [portrait(48, 37, .90, animated, light), text(390, 64, "~/byrm-tsn", 13, "accent"),
                text(386, 128, "Bayram Tosun", 46, weight=650), text(390, 172, "Software. Learning. Curiosity.", 20),
                text(390, 237, "Backend development", 17), text(390, 267, "Machine learning", 17),
                text(390, 317, "BSc + MSc Computer Science", 14, "muted"), text(390, 346, "London, UK", 14, "muted"),
@@ -135,6 +135,7 @@ def stats(palette, data, mobile=False, compact=False):
 
 
 def picture(kind, animated=False):
+    revision = "?v=2" if kind == "hello" else ""
     sources = []
     if animated:
         sources += [
@@ -151,7 +152,7 @@ def picture(kind, animated=False):
                 ('(max-width: 1100px)', f'{kind}-light-compact.svg'),
                 ('(prefers-color-scheme: dark)', f'{kind}-dark.svg')]
     alt = "Bayram Tosun. An animated ASCII portrait made from my photograph. Backend development and machine learning. Computer Science BSc and MSc, London." if kind == "hello" else "Public GitHub activity and repository language shares. Accessible text is available below."
-    return '<picture>\n' + ''.join(f'  <source media="{media}" srcset="./assets/{file}">\n' for media, file in sources) + f'  <img src="./assets/{kind}-light.svg" width="100%" alt="{alt}">\n</picture>'
+    return '<picture>\n' + ''.join(f'  <source media="{media}" srcset="./assets/{file}{revision}">\n' for media, file in sources) + f'  <img src="./assets/{kind}-light.svg{revision}" width="100%" alt="{alt}">\n</picture>'
 
 
 def readme(data):

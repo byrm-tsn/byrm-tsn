@@ -1,7 +1,9 @@
 # Maintaining this profile
 
 The portrait consists of positioned text characters derived from Bayram's public
-GitHub avatar. SVG is the container, not an illustration of the subject. Its reveal
+GitHub avatar, tightly cropped to his head with the background excluded. The text
+grid accounts for the character cell aspect ratio to preserve facial proportions.
+SVG is the container, not an illustration of the subject. Its reveal
 takes about two seconds; only the small prompt cursor continues blinking. Explicit
 still assets are selected for reduced-motion visitors. There are separate phone
 layouts and light/dark character densities.
