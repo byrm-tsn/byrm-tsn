@@ -5,6 +5,10 @@ IMG_0677 photograph, retaining his face, shoulders and upper chest while
 excluding the background. The text grid accounts for the character cell aspect
 ratio to preserve facial proportions. The portrait fits both the width and height
 of its frame, so wider photographs retain the complete visible bust.
+The 124-column grid stores 32 levels of shading in `portrait-tones.json`.
+Local contrast and a restrained sharpening pass retain photographic details;
+character density and opacity work together to distinguish facial shadows.
+Only text glyphs form the portrait, with no embedded photograph or painted face.
 SVG is the container, not an illustration of the subject. Its reveal
 takes about two seconds; only the small prompt cursor continues blinking. Explicit
 still assets are selected for reduced-motion visitors, with light/dark character
@@ -39,7 +43,8 @@ non-fork repositories. Contributions cover the last 365 UTC dates and use the
 counts shown by GitHub's public calendar, including any anonymized private counts
 the profile owner has chosen to make public. Language shares are not proficiency.
 
-To recreate the ASCII source, install Pillow in a local environment and run:
+To recreate the ASCII source, install Pillow, NumPy and OpenCV (`opencv-python`)
+in a local environment and run:
 
 ```sh
 python scripts/make_portrait.py /path/to/IMG_0677.jpg
@@ -48,8 +53,9 @@ python scripts/render_profile.py
 
 The crop and silhouette in `make_portrait.py` are fitted to the supplied photo;
 adjust them for a different photograph. Convert HEIC to an upright PNG first.
-The original photograph stays local; only its ASCII text is committed.
-Daily Actions runs do not need Pillow.
+The original photograph stays local; only its ASCII text and quantized tone data
+are committed. Daily Actions runs use the saved data and need none of these
+image-processing libraries.
 `render_profile.py --full` rebuilds the entire README from its template and will
 replace personal README edits; use it only intentionally.
 

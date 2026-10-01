@@ -1,11 +1,14 @@
 """Convert Bayram's supplied portrait into a fixed-width ASCII source file.
 
-Optional authoring tool (Pillow required); daily refreshes use portrait-*.txt.
+Optional authoring tool (Pillow, NumPy and OpenCV); daily refreshes use saved data.
 Usage: python scripts/make_portrait.py /path/to/IMG_0677.jpg
 """
 
+import json
 import sys
 from pathlib import Path
+import cv2
+import numpy as np
 from PIL import Image, ImageChops, ImageDraw, ImageOps
 
 # Coordinates fitted to the 1262 x 1575 IMG_0677 photograph. Retain the
@@ -38,7 +41,8 @@ OUTLINE = [
     (298,646),(287,623),(288,601),
 ]
 CROP = (0, 360, 1262, 1575)
-COLUMNS = 96
+COLUMNS = 124
+TONE_LEVELS = 32
 # Match the renderer's cell width and row height; avoid stretching the face.
 ROWS = round(COLUMNS * (CROP[3] - CROP[1]) / (CROP[2] - CROP[0]) * 4.05 / 6.94)
 
@@ -64,27 +68,46 @@ mask = Image.new("L", photo.size, 0)
 ImageDraw.Draw(mask).polygon([(x*w/REFERENCE_SIZE[0]-bounds[0], y*h/REFERENCE_SIZE[1]-bounds[1])
                              for x, y in OUTLINE], fill=255)
 photo = ImageOps.autocontrast(photo, cutoff=1, mask=mask)
+# Keep the photograph's features while strengthening local shadow boundaries.
+# A restrained CLAHE blend and small unsharp pass reveal the eyes, lips and jaw
+# without drawing replacement facial features or changing their geometry.
+gray = np.asarray(photo)
+local = cv2.createCLAHE(clipLimit=2.2, tileGridSize=(8, 8)).apply(gray)
+detail = cv2.addWeighted(gray, .55, local, .45, 0)
+detail = cv2.addWeighted(detail, 1.4, cv2.GaussianBlur(detail, (0, 0), 4), -.4, 0)
+photo = Image.fromarray(detail)
 # Average only subject pixels within each character cell. Resizing the full
 # photograph first would mix bright background pixels into edge characters.
 samples = ImageChops.multiply(photo, mask).resize((COLUMNS, ROWS), Image.Resampling.BOX)
 coverage = mask.resize((COLUMNS, ROWS), Image.Resampling.BOX)
-ramp = " .,:;irsXA253hMHGS#9B&@"
+tones = []
+for y in range(ROWS):
+    row = []
+    for x in range(COLUMNS):
+        sx = CROP[0] + (x+.5) * (CROP[2]-CROP[0]) / COLUMNS
+        sy = CROP[1] + (y+.5) * (CROP[3]-CROP[1]) / ROWS
+        alpha = coverage.getpixel((x,y))
+        if alpha < 153 or not all(inside(sx+dx, sy+dy) for dx, dy in ((0,0),(-2,0),(2,0),(0,-2),(0,2))):
+            row.append(-1)
+        else:
+            luminance = min(1, samples.getpixel((x,y))/alpha)
+            row.append(round(luminance * (TONE_LEVELS - 1)))
+    tones.append(row)
+assets = Path(__file__).resolve().parents[1] / "assets"
+(assets / "portrait-tones.json").write_text(json.dumps({"levels": TONE_LEVELS, "rows": tones}, separators=(",", ":")) + "\n")
+ramp = ";irsXA253hMHGS#9B&@"
 for theme in ("dark", "light"):
     rows = []
-    for y in range(ROWS):
+    for values in tones:
         row = []
-        for x in range(COLUMNS):
-            sx = CROP[0] + (x+.5) * (CROP[2]-CROP[0]) / COLUMNS
-            sy = CROP[1] + (y+.5) * (CROP[3]-CROP[1]) / ROWS
-            # Keep samples just inside the edge, removing the pale background halo.
-            alpha = coverage.getpixel((x,y))
-            if alpha < 153 or not all(inside(sx+dx, sy+dy) for dx, dy in ((0,0),(-2,0),(2,0),(0,-2),(0,2))):
+        for tone in values:
+            if tone < 0:
                 row.append(" ")
                 continue
-            luminance = min(1, samples.getpixel((x,y))/alpha)**.8
+            luminance = tone / (TONE_LEVELS - 1)
             density = luminance if theme == "dark" else 1-luminance
-            row.append(ramp[min(len(ramp)-1, int(density*(len(ramp)-1)))])
+            row.append(ramp[min(len(ramp)-1, round(density**.6*(len(ramp)-1)))])
         rows.append("".join(row).rstrip())
-    target = Path(__file__).resolve().parents[1] / "assets" / f"portrait-{theme}.txt"
+    target = assets / f"portrait-{theme}.txt"
     target.write_text("\n".join(rows).rstrip() + "\n")
     print(f"Wrote {COLUMNS} × {ROWS} {theme} text portrait")
