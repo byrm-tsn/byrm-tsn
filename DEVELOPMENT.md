@@ -8,7 +8,7 @@ SVG is the container, not an illustration of the subject. Its reveal
 takes about two seconds; only the small prompt cursor continues blinking. Explicit
 still assets are selected for reduced-motion visitors, with light/dark character
 densities. All theme and motion variants have the same aspect ratio. The header
-is capped at 640px wide and each stats card at 310px. Cards wrap naturally on
+is capped at 720px wide and each stats card at 310px. Cards wrap naturally on
 narrow screens; there are no viewport-dependent image layouts or 100% widths.
 
 ## Personal edits

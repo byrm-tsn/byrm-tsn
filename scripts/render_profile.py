@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
+PROFILE_ASSET = "profile-card"
 PALETTES = {
     "dark": {"bg": "#11161c", "fg": "#e5e9ee", "muted": "#a0acb9", "line": "#303943", "accent": "#d9ac70", "ink": "#c3ccd5"},
     "light": {"bg": "#f6f5f1", "fg": "#242b32", "muted": "#56616b", "line": "#d8dcd9", "accent": "#885821", "ink": "#45515d"},
@@ -102,18 +103,19 @@ def language_card(palette, data):
 def picture(kind, animated=False):
     # Theme/motion sources share one geometry. Never serve a tall mobile image
     # or use percentage widths: some README rendering paths can upscale them.
+    asset = PROFILE_ASSET if kind == "profile" else kind
     sources = []
     if animated:
-        sources += [('(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)', f'{kind}-dark-still.svg'),
-                    ('(prefers-reduced-motion: reduce)', f'{kind}-light-still.svg')]
-    sources.append(('(prefers-color-scheme: dark)', f'{kind}-dark.svg'))
+        sources += [('(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)', f'{asset}-dark-still.svg'),
+                    ('(prefers-reduced-motion: reduce)', f'{asset}-light-still.svg')]
+    sources.append(('(prefers-color-scheme: dark)', f'{asset}-dark.svg'))
     alts = {
         "profile": "Bayram Tosun. An animated ASCII portrait with my body included and the background removed. Backend development and machine learning. BSc and MSc Computer Science, London.",
         "activity": "Public repositories, stars, followers, and contributions. Text summary below.",
         "languages": "Language shares in my public code. Text summary below.",
     }
-    width = 640 if kind == "profile" else 310
-    return '<picture>\n' + ''.join(f'  <source media="{media}" srcset="./assets/{file}">\n' for media, file in sources) + f'  <img src="./assets/{kind}-light.svg" width="{width}" alt="{alts[kind]}">\n</picture>'
+    width = 720 if kind == "profile" else 310
+    return '<picture>\n' + ''.join(f'  <source media="{media}" srcset="./assets/{file}">\n' for media, file in sources) + f'  <img src="./assets/{asset}-light.svg" width="{width}" alt="{alts[kind]}">\n</picture>'
 
 
 def readme(data):
@@ -176,7 +178,7 @@ def main():
     data = json.loads((ASSETS / "stats.json").read_text())
     for theme, palette in PALETTES.items():
         for animated in (False, True):
-            name = f"profile-{theme}" + ("" if animated else "-still") + ".svg"
+            name = f"{PROFILE_ASSET}-{theme}" + ("" if animated else "-still") + ".svg"
             (ASSETS / name).write_text(hero(palette, animated))
         (ASSETS / f"activity-{theme}.svg").write_text(activity_card(palette, data))
         (ASSETS / f"languages-{theme}.svg").write_text(language_card(palette, data))
