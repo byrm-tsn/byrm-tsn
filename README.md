@@ -1,9 +1,9 @@
 <p align="center">
 <picture>
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/profile-detailed-dark-still.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile-detailed-light-still.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-detailed-dark.svg">
-  <img src="./assets/profile-detailed-light.svg" width="720" alt="Bayram Tosun. An animated ASCII portrait with my body included and the background removed. Backend development and machine learning. BSc and MSc Computer Science, London.">
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/profile-ascii-dark-still.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile-ascii-light-still.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-ascii-dark.svg">
+  <img src="./assets/profile-ascii-light.svg" width="800" alt="Bayram Tosun. An animated ASCII portrait with my body included and the background removed. Backend development and machine learning. BSc and MSc Computer Science, London.">
 </picture>
 </p>
 

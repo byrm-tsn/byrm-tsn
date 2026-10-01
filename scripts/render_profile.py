@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
-PROFILE_ASSET = "profile-detailed"
+PROFILE_ASSET = "profile-ascii"
 PALETTES = {
     "dark": {"bg": "#11161c", "fg": "#e5e9ee", "muted": "#a0acb9", "line": "#303943", "accent": "#d9ac70", "ink": "#c3ccd5"},
     "light": {"bg": "#f6f5f1", "fg": "#242b32", "muted": "#56616b", "line": "#d8dcd9", "accent": "#885821", "ink": "#45515d"},
@@ -30,15 +30,12 @@ def document(width, height, title, body, palette, description=""):
 </svg>\n'''
 
 
-def portrait(x, y, height=224, animated=True, light=False, width=204):
+def portrait(x, y, height=354, animated=True, light=False, width=370):
     theme = "light" if light else "dark"
-    portrait_ink = "#192129" if light else "#ecf3fa"
+    portrait_ink = "#53616d" if light else "#c3ccd5"
     rows = (ASSETS / f"portrait-{theme}.txt").read_text().splitlines()
-    tones = json.loads((ASSETS / "portrait-tones.json").read_text())
-    if len(rows) != len(tones["rows"]) or any(len(row) > len(values) for row, values in zip(rows, tones["rows"])):
-        raise ValueError("Portrait text and tone grid dimensions do not match")
     grid_width = max(map(len, rows)) * 4.05
-    grid_height = len(rows) * 6.94
+    grid_height = len(rows) * 7.8
     scale = min(width / grid_width, height / grid_height)
     x += (width - grid_width * scale) / 2
     y += (height - grid_height * scale) / 2
@@ -51,39 +48,27 @@ def portrait(x, y, height=224, animated=True, light=False, width=204):
         if animated:
             delay = 1.55 * i / max(1, len(rows) - 1)
             timing = f'values="0;0;{reveal_width:.2f}" keyTimes="0;{delay/(delay+.45):.4f};1"' if i else f'from="0" to="{reveal_width:.2f}"'
-            out.append(f'<clipPath id="r{i}"><rect x="-1" y="{i*6.94-6.8:.2f}" width="{reveal_width:.2f}" height="7.6"><animate attributeName="width" {timing} begin="0s" dur="{delay+.45:.2f}s" fill="freeze"/></rect></clipPath>')
+            out.append(f'<clipPath id="r{i}"><rect x="-1" y="{i*7.8-7.1:.2f}" width="{reveal_width:.2f}" height="8.1"><animate attributeName="width" {timing} begin="0s" dur="{delay+.45:.2f}s" fill="freeze"/></rect></clipPath>')
             attrs = f'clip-path="url(#r{i})"'
         out.append(f'<g {attrs}>')
-        groups = {}
-        for column, char in enumerate(row):
-            if char != " ":
-                level = tones["rows"][i][column]
-                if not 0 <= level < tones["levels"]:
-                    raise ValueError("A portrait character has no valid tone")
-                groups.setdefault(level, []).append((column, char))
-        for level, cells in groups.items():
-            density = level / (tones["levels"] - 1)
-            if light:
-                density = 1 - density
-            opacity = .18 + .82 * density**1.3
-            positions = " ".join(f"{column*4.05:.2f}" for column, _ in cells)
-            value = "".join(char for _, char in cells)
-            out.append(text(positions, f"{i*6.94:.2f}", value, 6.7, portrait_ink, 600, f'fill-opacity="{opacity:.3f}"'))
+        positions = " ".join(f"{column*4.05:.2f}" for column in range(len(row)))
+        out.append(text(positions, f"{i*7.8:.2f}", row, 6.7, portrait_ink, 400, 'xml:space="preserve"'))
         out.append('</g>')
     return "".join(out) + '</g>'
 
 
 def hero(palette, animated=True):
-    out = [portrait(16, 15, 224, animated, palette == PALETTES["light"]),
-           text(244, 43, "~/byrm-tsn", 12, "accent"),
-           text(240, 94, "Bayram Tosun", 38, weight=650),
-           text(244, 132, "Backend development", 17),
-           text(244, 157, "Machine learning", 17),
-           text(244, 191, "BSc + MSc Computer Science · London", 12, "muted"),
-           text(244, 224, "> always curious", 12, "accent")]
+    out = [portrait(16, 15, 354, animated, palette == PALETTES["light"]),
+           text(414, 76, "~/byrm-tsn", 12, "accent"),
+           text(410, 130, "Bayram Tosun", 33, weight=650),
+           text(414, 175, "Backend development", 17),
+           text(414, 201, "Machine learning", 17),
+           text(414, 247, "BSc + MSc Computer Science", 12, "muted"),
+           text(414, 269, "London, UK", 12, "muted"),
+           text(414, 324, "> always curious", 12, "accent")]
     animation = '<animate attributeName="opacity" values="1;0;1" keyTimes="0;0.5;1" dur="1.4s" calcMode="discrete" repeatCount="indefinite"/>' if animated else ""
-    out.append(f'<text x="367" y="224" fill="accent" font-size="12">_{animation}</text>')
-    return document(640, 248, "Bayram Tosun — backend development and machine learning", "".join(out), palette,
+    out.append(f'<text x="537" y="324" fill="accent" font-size="12">_{animation}</text>')
+    return document(760, 384, "Bayram Tosun — backend development and machine learning", "".join(out), palette,
                     "Animated ASCII portrait from my photograph, including my shoulders and upper chest, with the background excluded. Computer Science BSc and MSc graduate in London.")
 
 
@@ -138,7 +123,7 @@ def picture(kind, animated=False):
         "activity": "Public repositories, stars, followers, and contributions. Text summary below.",
         "languages": "Language shares in my public code. Text summary below.",
     }
-    width = 720 if kind == "profile" else 310
+    width = 800 if kind == "profile" else 310
     return '<picture>\n' + ''.join(f'  <source media="{media}" srcset="./assets/{file}">\n' for media, file in sources) + f'  <img src="./assets/{asset}-light.svg" width="{width}" alt="{alts[kind]}">\n</picture>'
 
 

@@ -5,16 +5,18 @@ IMG_0677 photograph, retaining his face, shoulders and upper chest while
 excluding the background. The text grid accounts for the character cell aspect
 ratio to preserve facial proportions. The portrait fits both the width and height
 of its frame, so wider photographs retain the complete visible bust.
-The 124-column grid stores 32 levels of shading in `portrait-tones.json`.
-Local contrast and a restrained sharpening pass retain photographic details;
-character density and opacity work together to distinguish facial shadows.
+The 80-column, 40-row grid uses larger, individually legible characters.
+Bilateral smoothing, local contrast and restrained sharpening retain the main
+facial features. The shapes of ` .,:;-=+*#%@` create the shading in one ink
+colour; dense characters represent shadows without per-character opacity.
 Only text glyphs form the portrait, with no embedded photograph or painted face.
 SVG is the container, not an illustration of the subject. Its reveal
 takes about two seconds; only the small prompt cursor continues blinking. Explicit
-still assets are selected for reduced-motion visitors, with light/dark character
-densities. All theme and motion variants have the same aspect ratio. The header
-is capped at 720px wide and each stats card at 310px. Cards wrap naturally on
-narrow screens; there are no viewport-dependent image layouts or 100% widths.
+still assets are selected for reduced-motion visitors. Both themes use the same
+characters with contrasting ink colours. All theme and motion variants have the
+same aspect ratio. The header is capped at 800px wide and each stats card at
+310px. Cards wrap naturally on narrow screens; there are no viewport-dependent
+image layouts or 100% widths.
 
 ## Personal edits
 
@@ -53,8 +55,8 @@ python scripts/render_profile.py
 
 The crop and silhouette in `make_portrait.py` are fitted to the supplied photo;
 adjust them for a different photograph. Convert HEIC to an upright PNG first.
-The original photograph stays local; only its ASCII text and quantized tone data
-are committed. Daily Actions runs use the saved data and need none of these
+The original photograph stays local; only its ASCII text and rendered SVGs
+are committed. Daily Actions runs use the saved text and need none of these
 image-processing libraries.
 `render_profile.py --full` rebuilds the entire README from its template and will
 replace personal README edits; use it only intentionally.
