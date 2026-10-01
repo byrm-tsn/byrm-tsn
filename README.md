@@ -38,7 +38,7 @@ Computer Science **BSc & MSc graduate** in **London**. I build software with **S
 <details>
 <summary>About these numbers</summary>
 
-Updated **2026-10-01**. **4 public repositories**, **4 stars earned** on owned non-fork repositories, **8 followers**, and **14 contributions** visible on my public calendar over the last 365 days.
+Updated **2026-10-01**. **4 public repositories**, **4 stars earned** on owned non-fork repositories, **8 followers**, and **15 contributions** visible on my public calendar over the last 365 days.
 
 **Repository language shares:** Python 96.2%, C 2.1%, HTML 0.6%, C++ 0.4%, Cython 0.4%, Other 0.3%
 
