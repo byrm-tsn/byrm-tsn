@@ -208,7 +208,7 @@ Language shares measure code bytes in my public, non-fork repositories; they are
 <sub>Find me at <a href="https://bayramtosun.dev">bayramtosun.dev</a> or say hello at <a href="mailto:bayramtosun@outlook.com">bayramtosun@outlook.com</a>.</sub>
 
 <br><br>
-<img src="https://komarev.com/ghpvc/?username=byrm-tsn&amp;label=Profile+views&amp;color=80705b&amp;style=flat" alt="Profile views">
+<img src="https://komarev.com/ghpvc/?username=byrm-tsn&amp;label=Profile+views&amp;color=80705b&amp;style=flat-square" alt="Profile views">
 '''
 
 
