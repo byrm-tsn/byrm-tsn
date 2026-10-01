@@ -135,7 +135,6 @@ def stats(palette, data, mobile=False, compact=False):
 
 
 def picture(kind, animated=False):
-    revision = "?v=2" if kind == "hello" else ""
     sources = []
     if animated:
         sources += [
@@ -151,13 +150,13 @@ def picture(kind, animated=False):
                 ('(prefers-color-scheme: dark) and (max-width: 1100px)', f'{kind}-dark-compact.svg'),
                 ('(max-width: 1100px)', f'{kind}-light-compact.svg'),
                 ('(prefers-color-scheme: dark)', f'{kind}-dark.svg')]
-    alt = "Bayram Tosun. An animated ASCII portrait made from my photograph. Backend development and machine learning. Computer Science BSc and MSc, London." if kind == "hello" else "Public GitHub activity and repository language shares. Accessible text is available below."
-    return '<picture>\n' + ''.join(f'  <source media="{media}" srcset="./assets/{file}{revision}">\n' for media, file in sources) + f'  <img src="./assets/{kind}-light.svg{revision}" width="100%" alt="{alt}">\n</picture>'
+    alt = "Bayram Tosun. An animated ASCII head portrait made from my photograph. Backend development and machine learning. Computer Science BSc and MSc, London." if kind == "head" else "Public GitHub activity and repository language shares. Accessible text is available below."
+    return '<picture>\n' + ''.join(f'  <source media="{media}" srcset="./assets/{file}">\n' for media, file in sources) + f'  <img src="./assets/{kind}-light.svg" width="100%" alt="{alt}">\n</picture>'
 
 
 def readme(data):
     languages = ", ".join(f"{name} {100*n/sum(data['languages'].values()):.1f}%" for name, n in language_rows(data["languages"])) or "No public language data yet."
-    return f'''{picture("hello", animated=True)}
+    return f'''{picture("head", animated=True)}
 
 <p align="center">
   <a href="https://bayramtosun.dev"><b>Website ↗</b></a> &nbsp; · &nbsp;
@@ -227,7 +226,7 @@ def main():
         for mobile, compact in ((False, False), (True, False), (False, True)):
             suffix = theme + ("-mobile" if mobile else ("-compact" if compact else ""))
             for animated in (False, True):
-                name = f"hello-{suffix}" + ("" if animated else "-still") + ".svg"
+                name = f"head-{suffix}" + ("" if animated else "-still") + ".svg"
                 (ASSETS / name).write_text(hero(palette, mobile, animated, compact))
             (ASSETS / f"stats-{suffix}.svg").write_text(stats(palette, data, mobile, compact))
     target = ROOT / "README.md"

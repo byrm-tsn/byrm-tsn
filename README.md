@@ -1,16 +1,16 @@
 <picture>
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/hello-dark-mobile-still.svg?v=2">
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="./assets/hello-light-mobile-still.svg?v=2">
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 1100px)" srcset="./assets/hello-dark-compact-still.svg?v=2">
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 1100px)" srcset="./assets/hello-light-compact-still.svg?v=2">
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/hello-dark-still.svg?v=2">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/hello-light-still.svg?v=2">
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/hello-dark-mobile.svg?v=2">
-  <source media="(max-width: 600px)" srcset="./assets/hello-light-mobile.svg?v=2">
-  <source media="(prefers-color-scheme: dark) and (max-width: 1100px)" srcset="./assets/hello-dark-compact.svg?v=2">
-  <source media="(max-width: 1100px)" srcset="./assets/hello-light-compact.svg?v=2">
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/hello-dark.svg?v=2">
-  <img src="./assets/hello-light.svg?v=2" width="100%" alt="Bayram Tosun. An animated ASCII portrait made from my photograph. Backend development and machine learning. Computer Science BSc and MSc, London.">
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/head-dark-mobile-still.svg">
+  <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="./assets/head-light-mobile-still.svg">
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 1100px)" srcset="./assets/head-dark-compact-still.svg">
+  <source media="(prefers-reduced-motion: reduce) and (max-width: 1100px)" srcset="./assets/head-light-compact-still.svg">
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/head-dark-still.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/head-light-still.svg">
+  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/head-dark-mobile.svg">
+  <source media="(max-width: 600px)" srcset="./assets/head-light-mobile.svg">
+  <source media="(prefers-color-scheme: dark) and (max-width: 1100px)" srcset="./assets/head-dark-compact.svg">
+  <source media="(max-width: 1100px)" srcset="./assets/head-light-compact.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/head-dark.svg">
+  <img src="./assets/head-light.svg" width="100%" alt="Bayram Tosun. An animated ASCII head portrait made from my photograph. Backend development and machine learning. Computer Science BSc and MSc, London.">
 </picture>
 
 <p align="center">
