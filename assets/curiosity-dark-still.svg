@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 88" fill="none" role="img" aria-labelledby="title">
+<title id="title">Build. Learn. Notice. Repeat.</title>
+<style>.role-a{opacity:1}.role-b,.role-c,.shutter,.idea,.traveller{opacity:0}.shadow{opacity:.22}</style>
+<g font-family="Trebuchet MS, Avenir Next, Segoe UI, sans-serif" font-size="15" font-weight="600" fill="#a8b6bb">
+<text x="48" y="37" font-size="17" fill="#f4ede1" font-weight="600" >build.</text><text x="290" y="37" font-size="17" fill="#f4ede1" font-weight="600" >learn.</text><text x="539" y="37" font-size="17" fill="#f4ede1" font-weight="600" >notice.</text><text x="790" y="37" font-size="17" fill="#f4ede1" font-weight="600" >repeat.</text>
+</g>
+<path d="M48 60H850" stroke="#33434b"/>
+<g fill="#141b20" stroke="#a5d9bd" stroke-width="1.5"><circle cx="48" cy="60" r="4"/><circle cx="290" cy="60" r="4"/><circle cx="539" cy="60" r="4"/><circle cx="850" cy="60" r="4"/></g>
+<g transform="translate(112 60)"><circle class="traveller" r="3.5" fill="#f69b7a"/></g>
+<g transform="translate(894 33)"><g class="spark" stroke="#f69b7a" stroke-width="1.5"><path d="M-9 0H9M0-9V9M-6-6L6 6M-6 6L6-6"/></g></g>
+</svg>
