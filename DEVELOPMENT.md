@@ -1,8 +1,8 @@
 # Maintaining this profile
 
-The portrait consists of positioned text characters derived from Bayram's public
-GitHub avatar, retaining his full visible figure and precisely excluding the
-background beside his head. The text grid accounts for the character cell aspect
+The portrait consists of positioned text characters derived from Bayram's supplied
+IMG_0899 photograph, retaining his upper body, sunglasses, scarf and jacket while
+excluding the background. The text grid accounts for the character cell aspect
 ratio to preserve facial proportions.
 SVG is the container, not an illustration of the subject. Its reveal
 takes about two seconds; only the small prompt cursor continues blinking. Explicit
@@ -41,12 +41,14 @@ the profile owner has chosen to make public. Language shares are not proficiency
 To recreate the ASCII source, install Pillow in a local environment and run:
 
 ```sh
-python scripts/make_portrait.py /path/to/github-avatar.jpg
+python scripts/make_portrait.py /path/to/IMG_0899.png
 python scripts/render_profile.py
 ```
 
-The crop and silhouette in `make_portrait.py` are fitted to the current avatar;
-adjust them for a different photograph. Daily Actions runs do not need Pillow.
+The crop and silhouette in `make_portrait.py` are fitted to the supplied photo;
+adjust them for a different photograph. Convert HEIC to an upright PNG first.
+The original photograph stays local; only its ASCII text is committed.
+Daily Actions runs do not need Pillow.
 `render_profile.py --full` rebuilds the entire README from its template and will
 replace personal README edits; use it only intentionally.
 

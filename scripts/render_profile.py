@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
-PROFILE_ASSET = "profile-card"
+PROFILE_ASSET = "profile-portrait"
 PALETTES = {
     "dark": {"bg": "#11161c", "fg": "#e5e9ee", "muted": "#a0acb9", "line": "#303943", "accent": "#d9ac70", "ink": "#c3ccd5"},
     "light": {"bg": "#f6f5f1", "fg": "#242b32", "muted": "#56616b", "line": "#d8dcd9", "accent": "#885821", "ink": "#45515d"},
@@ -34,6 +34,7 @@ def portrait(x, y, height=224, animated=True, light=False):
     theme = "light" if light else "dark"
     rows = (ASSETS / f"portrait-{theme}.txt").read_text().splitlines()
     scale = height / (len(rows) * 6.94)
+    reveal_width = max(map(len, rows)) * 4.05 + 2
     out = [f'<g transform="translate({x} {y}) scale({scale:.5f})" aria-hidden="true">']
     for i, row in enumerate(rows):
         if not row:
@@ -42,15 +43,15 @@ def portrait(x, y, height=224, animated=True, light=False):
         attrs = 'xml:space="preserve"'
         if animated:
             delay = i * .019
-            timing = f'values="0;0;310" keyTimes="0;{delay/(delay+.45):.4f};1"' if i else 'from="0" to="310"'
-            out.append(f'<clipPath id="r{i}"><rect x="-1" y="{i*6.94-6.8:.2f}" width="310" height="7.6"><animate attributeName="width" {timing} begin="0s" dur="{delay+.45:.2f}s" fill="freeze"/></rect></clipPath>')
+            timing = f'values="0;0;{reveal_width:.2f}" keyTimes="0;{delay/(delay+.45):.4f};1"' if i else f'from="0" to="{reveal_width:.2f}"'
+            out.append(f'<clipPath id="r{i}"><rect x="-1" y="{i*6.94-6.8:.2f}" width="{reveal_width:.2f}" height="7.6"><animate attributeName="width" {timing} begin="0s" dur="{delay+.45:.2f}s" fill="freeze"/></rect></clipPath>')
             attrs += f' clip-path="url(#r{i})"'
         out.append(text(positions, f"{i*6.94:.2f}", row, 6.7, "ink", 500, attrs))
     return "".join(out) + '</g>'
 
 
 def hero(palette, animated=True):
-    out = [portrait(28, 15, 224, animated, palette == PALETTES["light"]),
+    out = [portrait(20, 15, 224, animated, palette == PALETTES["light"]),
            text(188, 43, "~/byrm-tsn", 12, "accent"),
            text(184, 94, "Bayram Tosun", 38, weight=650),
            text(188, 132, "Backend development", 17),
@@ -60,7 +61,7 @@ def hero(palette, animated=True):
     animation = '<animate attributeName="opacity" values="1;0;1" keyTimes="0;0.5;1" dur="1.4s" calcMode="discrete" repeatCount="indefinite"/>' if animated else ""
     out.append(f'<text x="311" y="224" fill="accent" font-size="12">_{animation}</text>')
     return document(640, 248, "Bayram Tosun — backend development and machine learning", "".join(out), palette,
-                    "Animated ASCII portrait of the full figure in my GitHub photo, with the background excluded. Computer Science BSc and MSc graduate in London.")
+                    "Animated half-body ASCII portrait from my photograph, with sunglasses, scarf and jacket, and the background excluded. Computer Science BSc and MSc graduate in London.")
 
 
 def language_rows(languages):
