@@ -1,9 +1,9 @@
 <p align="center">
 <picture>
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/profile-software-dark-still.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile-software-light-still.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-software-dark.svg">
-  <img src="./assets/profile-software-light.svg" width="800" alt="Bayram Tosun. An animated ASCII portrait. Software development with Swift, Python and C#. BSc and MSc Computer Science, London.">
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/profile-swift-python-ml-dark-still.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile-swift-python-ml-light-still.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-swift-python-ml-dark.svg">
+  <img src="./assets/profile-swift-python-ml-light.svg" width="800" alt="Bayram Tosun. An animated ASCII portrait. Software development. Swift, Python and machine learning. BSc and MSc Computer Science, London.">
 </picture>
 </p>
 

@@ -9,7 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ASSETS = ROOT / "assets"
 ASSET_NAMES = {
-    "profile": "profile-software",
+    "profile": "profile-swift-python-ml",
     "activity": "github-activity",
     "languages": "language-overview",
 }
@@ -67,14 +67,14 @@ def hero(palette, animated=True):
            text(414, 76, "~/byrm-tsn", 12, "accent"),
            text(410, 130, "Bayram Tosun", 33, weight=650),
            text(414, 175, "Software development", 17),
-           text(414, 201, "Swift · Python · C#", 14),
+           text(414, 201, "Swift · Python · ML", 14),
            text(414, 247, "BSc + MSc Computer Science", 12, "muted"),
            text(414, 269, "London, UK", 12, "muted"),
            text(414, 324, "> always curious", 12, "accent")]
     animation = '<animate attributeName="opacity" values="1;0;1" keyTimes="0;0.5;1" dur="1.4s" calcMode="discrete" repeatCount="indefinite"/>' if animated else ""
     out.append(f'<text x="537" y="324" fill="accent" font-size="12">_{animation}</text>')
     return document(760, 384, "Bayram Tosun — software development", "".join(out), palette,
-                    "Animated ASCII portrait from my photograph, including my shoulders and upper chest, with the background excluded. Software development with Swift, Python and C#. Computer Science BSc and MSc graduate in London.")
+                    "Animated ASCII portrait from my photograph, including my shoulders and upper chest, with the background excluded. Software development. Swift, Python and machine learning. Computer Science BSc and MSc graduate in London.")
 
 
 def language_rows(languages):
@@ -114,7 +114,7 @@ def picture(kind, animated=False):
                     ('(prefers-reduced-motion: reduce)', f'{asset}-light-still.svg')]
     sources.append(('(prefers-color-scheme: dark)', f'{asset}-dark.svg'))
     alts = {
-        "profile": "Bayram Tosun. An animated ASCII portrait. Software development with Swift, Python and C#. BSc and MSc Computer Science, London.",
+        "profile": "Bayram Tosun. An animated ASCII portrait. Software development. Swift, Python and machine learning. BSc and MSc Computer Science, London.",
         "activity": "GitHub activity: repositories, stars, followers, and contributions. Scope and text summary below.",
         "languages": "Languages I use: " + ", ".join(PROFILE_LANGUAGES) + ".",
     }
