@@ -1,73 +1,54 @@
-<picture>
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/head-dark-mobile-still.svg">
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 600px)" srcset="./assets/head-light-mobile-still.svg">
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark) and (max-width: 1100px)" srcset="./assets/head-dark-compact-still.svg">
-  <source media="(prefers-reduced-motion: reduce) and (max-width: 1100px)" srcset="./assets/head-light-compact-still.svg">
-  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/head-dark-still.svg">
-  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/head-light-still.svg">
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/head-dark-mobile.svg">
-  <source media="(max-width: 600px)" srcset="./assets/head-light-mobile.svg">
-  <source media="(prefers-color-scheme: dark) and (max-width: 1100px)" srcset="./assets/head-dark-compact.svg">
-  <source media="(max-width: 1100px)" srcset="./assets/head-light-compact.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/head-dark.svg">
-  <img src="./assets/head-light.svg" width="100%" alt="Bayram Tosun. An animated ASCII head portrait made from my photograph. Backend development and machine learning. Computer Science BSc and MSc, London.">
-</picture>
-
 <p align="center">
-  <a href="https://bayramtosun.dev"><b>Website ↗</b></a> &nbsp; · &nbsp;
-  <a href="mailto:bayramtosun@outlook.com"><b>Email ↗</b></a> &nbsp; · &nbsp;
-  <a href="https://linkedin.com/in/bayram-tosun-a19217102"><b>LinkedIn ↗</b></a>
+<picture>
+  <source media="(prefers-reduced-motion: reduce) and (prefers-color-scheme: dark)" srcset="./assets/profile-dark-still.svg">
+  <source media="(prefers-reduced-motion: reduce)" srcset="./assets/profile-light-still.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/profile-dark.svg">
+  <img src="./assets/profile-light.svg" width="640" alt="Bayram Tosun. An animated ASCII portrait with my body included and the background removed. Backend development and machine learning. BSc and MSc Computer Science, London.">
+</picture>
 </p>
 
-### A little about me
+<p align="center">
+  <a href="https://bayramtosun.dev">Website</a> ·
+  <a href="mailto:bayramtosun@outlook.com">Email</a> ·
+  <a href="https://linkedin.com/in/bayram-tosun-a19217102">LinkedIn</a> ·
+  <a href="https://instagram.com/bayram.jpeg">Photography</a> ·
+  <a href="https://medium.com/@bayramtosun">Medium</a> ·
+  <a href="https://x.com/9byrmtsn">X</a>
+</p>
 
-I build backend systems and explore machine learning. I enjoy turning ideas into practical software and understanding the logic underneath.
+Computer Science **BSc & MSc graduate** in **London**, building backend software and exploring machine learning. Away from code, I'm usually behind a camera.
 
-My background is in **Computer Science, at both BSc and MSc level**. My interests span backend engineering, computer vision, and cloud tooling. Away from code, I spend time with a camera — you can find that side of me at [@bayram.jpeg](https://instagram.com/bayram.jpeg).
-
-### Tools I work with
-
-**Languages**
-
-<img src="https://skillicons.dev/icons?i=py,cs,swift,ts,js,cpp,c&amp;theme=dark" width="308" alt="Python, C#, Swift, TypeScript, JavaScript, C++, C">
-
-**Web & data**
-
-<img src="https://skillicons.dev/icons?i=django,react,html,css,postgres,mysql&amp;theme=dark" width="263" alt="Django, React, HTML, CSS, PostgreSQL, MySQL">
-
-**Machine learning & infrastructure**
-
-<img src="https://skillicons.dev/icons?i=pytorch,tensorflow,docker,git,linux,gcp&amp;theme=dark" width="263" alt="PyTorch, TensorFlow, Docker, Git, Linux, Google Cloud">
-
-### On GitHub
+<p align="center">
+  <b>Tools I work with</b><br><br>
+  <img src="https://skillicons.dev/icons?i=py,cs,swift,ts,js,cpp,c,django,react,html,css,postgres,mysql,pytorch,tensorflow,docker,git,linux,gcp&amp;perline=10&amp;theme=dark" width="460" alt="Python, C#, Swift, TypeScript, JavaScript, C++, C, Django, React, HTML, CSS, PostgreSQL, MySQL, PyTorch, TensorFlow, Docker, Git, Linux, Google Cloud">
+</p>
 
 <!-- BEGIN AUTO:stats -->
+<p align="center">
 <picture>
-  <source media="(prefers-color-scheme: dark) and (max-width: 600px)" srcset="./assets/stats-dark-mobile.svg">
-  <source media="(max-width: 600px)" srcset="./assets/stats-light-mobile.svg">
-  <source media="(prefers-color-scheme: dark) and (max-width: 1100px)" srcset="./assets/stats-dark-compact.svg">
-  <source media="(max-width: 1100px)" srcset="./assets/stats-light-compact.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="./assets/stats-dark.svg">
-  <img src="./assets/stats-light.svg" width="100%" alt="Public GitHub activity and repository language shares. Accessible text is available below.">
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/activity-dark.svg">
+  <img src="./assets/activity-light.svg" width="310" alt="Public repositories, stars, followers, and contributions. Text summary below.">
 </picture>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./assets/languages-dark.svg">
+  <img src="./assets/languages-light.svg" width="310" alt="Language shares in my public code. Text summary below.">
+</picture>
+</p>
 
 <details>
-<summary>About these numbers · accessible text</summary>
+<summary>About these numbers</summary>
 
 Updated **2026-10-01**. **4 public repositories**, **4 stars earned** on owned non-fork repositories, **8 followers**, and **9 contributions** visible on my public calendar over the last 365 days.
 
 **Language shares:** Python 96.2%, C 2.1%, HTML 0.6%, C++ 0.4%, Cython 0.4%, Other 0.3%
 
-Language shares measure code bytes in my public, non-fork repositories; they are not a measure of proficiency. The cards refresh daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml).
+These measure code bytes in my public, non-fork repositories, not proficiency. Refreshed daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml).
 
 </details>
 <!-- END AUTO:stats -->
 
-### Elsewhere
-
-[Photography ↗](https://instagram.com/bayram.jpeg) &nbsp; · &nbsp; [Writing ↗](https://medium.com/@bayramtosun) &nbsp; · &nbsp; [X ↗](https://x.com/9byrmtsn) &nbsp; · &nbsp; [Buy me a coffee ↗](https://www.buymeacoffee.com/bayramtosun)
-
-<sub>Find me at <a href="https://bayramtosun.dev">bayramtosun.dev</a> or say hello at <a href="mailto:bayramtosun@outlook.com">bayramtosun@outlook.com</a>.</sub>
-
-<br><br>
-<img src="https://komarev.com/ghpvc/?username=byrm-tsn&amp;label=Profile+views&amp;color=80705b&amp;style=flat-square" alt="Profile views">
+<p align="center">
+  <a href="https://www.buymeacoffee.com/bayramtosun"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" width="140" alt="Buy me a coffee"></a>
+  &nbsp;
+  <img src="https://komarev.com/ghpvc/?username=byrm-tsn&amp;label=Profile+views&amp;color=80705b&amp;style=flat-square" alt="Profile views">
+</p>

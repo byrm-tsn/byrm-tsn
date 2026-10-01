@@ -1,12 +1,15 @@
 # Maintaining this profile
 
 The portrait consists of positioned text characters derived from Bayram's public
-GitHub avatar, tightly cropped to his head with the background excluded. The text
-grid accounts for the character cell aspect ratio to preserve facial proportions.
+GitHub avatar, retaining his full visible figure and precisely excluding the
+background beside his head. The text grid accounts for the character cell aspect
+ratio to preserve facial proportions.
 SVG is the container, not an illustration of the subject. Its reveal
 takes about two seconds; only the small prompt cursor continues blinking. Explicit
-still assets are selected for reduced-motion visitors. There are separate phone
-layouts and light/dark character densities.
+still assets are selected for reduced-motion visitors, with light/dark character
+densities. All theme and motion variants have the same aspect ratio. The header
+is capped at 640px wide and each stats card at 310px. Cards wrap naturally on
+narrow screens; there are no viewport-dependent image layouts or 100% widths.
 
 ## Personal edits
 

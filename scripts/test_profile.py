@@ -3,7 +3,7 @@ from datetime import date, timedelta
 from xml.etree import ElementTree as ET
 
 from fetch_stats import Calendar
-from render_profile import PALETTES, hero, language_rows, stats, update_stats_block
+from render_profile import PALETTES, hero, language_rows, activity_card, language_card, update_stats_block
 
 
 class ProfileTests(unittest.TestCase):
@@ -53,12 +53,12 @@ class ProfileTests(unittest.TestCase):
     def test_all_svg_variants_and_empty_languages(self):
         data = dict(updated='2026-10-01', repositories=0, stars=0, followers=0, contributions=0, languages={})
         for palette in PALETTES.values():
-            for mobile, compact in ((False, False), (True, False), (False, True)):
-                ET.fromstring(stats(palette, data, mobile, compact))
-                for animated in (False, True):
-                    root = ET.fromstring(hero(palette, mobile, animated, compact))
-                    animations = root.findall('.//{http://www.w3.org/2000/svg}animate')
-                    self.assertEqual(bool(animations), animated)
+            ET.fromstring(activity_card(palette, data))
+            ET.fromstring(language_card(palette, data))
+            for animated in (False, True):
+                root = ET.fromstring(hero(palette, animated))
+                animations = root.findall('.//{http://www.w3.org/2000/svg}animate')
+                self.assertEqual(bool(animations), animated)
 
 
 if __name__ == '__main__':
