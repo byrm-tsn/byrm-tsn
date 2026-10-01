@@ -34,6 +34,8 @@ def portrait(x, y, scale=1, animated=True, light=False):
     rows = (ASSETS / f"portrait-{theme}.txt").read_text().splitlines()
     out = [f'<g transform="translate({x} {y}) scale({scale})" aria-hidden="true">']
     for i, row in enumerate(rows):
+        if not row:
+            continue
         positions = " ".join(f"{n*4.05:.2f}" for n in range(len(row)))
         attrs = 'xml:space="preserve"'
         if animated:

@@ -45,7 +45,7 @@ for theme in ("dark", "light"):
             luminance = (photo.getpixel((x,y))/255)**.8
             density = luminance if theme == "dark" else 1-luminance
             row.append(ramp[min(len(ramp)-1, int(density*(len(ramp)-1)))])
-        rows.append("".join(row))
+        rows.append("".join(row).rstrip())
     target = Path(__file__).resolve().parents[1] / "assets" / f"portrait-{theme}.txt"
     target.write_text("\n".join(rows) + "\n")
     print(f"Wrote {photo.width} × {photo.height} {theme} text portrait")
