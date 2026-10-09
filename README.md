@@ -42,9 +42,9 @@ Computer Science **BSc & MSc graduate** in **London**. I build software with **S
 
 **6 owned repositories**, including private repositories. This account-wide total was verified on **2026-10-01**.
 
-Other figures updated **2026-10-08**: **4 stars earned** on owned public non-fork repositories, **8 followers**, and **17 contributions** visible on my public calendar over the last 365 days.
+Other figures updated **2026-10-09**: **4 stars earned** on owned public non-fork repositories, **8 followers**, and **36 contributions** visible on my public calendar over the last 365 days.
 
-**Repository language shares:** Python 96.2%, C 2.1%, HTML 0.6%, C++ 0.4%, Cython 0.4%, Other 0.3%
+**Repository language shares:** Python 96.1%, C 2.0%, HTML 0.7%, C++ 0.4%, Cython 0.4%, Other 0.4%
 
 The repository total is a dated account snapshot. The other activity figures and repository language shares use public GitHub data and refresh daily through [GitHub Actions](https://github.com/byrm-tsn/byrm-tsn/actions/workflows/refresh-profile.yml). Language shares count code bytes in non-fork repositories, not proficiency or my complete body of work. The **Languages I use** card lists a selection from my broader toolkit.
 
